@@ -10,36 +10,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3973b30-e0e5-4d6d-a6d5-d6cf0a3edb9e" name="默认变更列表" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/SuperMario.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/SuperMario.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/Mario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/Mario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/MyView2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/MyView2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/Sprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/TiledLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/TiledLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/audio/MyMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MyMusic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/audio/MySoundPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MySoundPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/enemy/Cannon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Cannon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/enemy/Chestunt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Chestunt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/enemy/Turtle.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Turtle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/enums/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/enums/ItemType.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/ItemType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/enums/Site.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/Site.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/item/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/item/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Coin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/item/EnemyBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/EnemyBullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/item/Flower.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Flower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/item/ItemSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/ItemSprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/item/Mushroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Mushroom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/item/Star.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Star.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/item/brick/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Brick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/item/brick/Broken.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Broken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/item/brick/CommonBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/CommonBrick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/suramire/androidgame25/item/brick/Pipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Pipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/Mario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/Mario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/MyView2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/MyView2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/TiledLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/TiledLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MyMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MyMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MySoundPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MySoundPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Cannon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Cannon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Chestunt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Chestunt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Turtle.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Turtle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/ItemType.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/ItemType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/Site.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/Site.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Coin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Flower.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Flower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/ItemSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/ItemSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Mushroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Mushroom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Star.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Star.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Brick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Broken.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Broken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/CommonBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/CommonBrick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Pipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Pipe.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,6 +133,14 @@
       <option name="presentableId" value="Default" />
       <updated>1634395712170</updated>
     </task>
+    <task id="LOCAL-00001" summary="重构;">
+      <created>1634396986446</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1634396986446</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,5 +159,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="重构;" />
+    <option name="LAST_COMMIT_MESSAGE" value="重构;" />
   </component>
 </project>

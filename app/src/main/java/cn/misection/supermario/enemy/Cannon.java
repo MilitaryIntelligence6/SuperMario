@@ -3,12 +3,12 @@ package cn.misection.supermario.enemy;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cn.misection.supermario.Sprite;
 import cn.misection.supermario.audio.MySoundPool;
 import cn.misection.supermario.item.EnemyBullet;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 敌人类-大炮
@@ -18,7 +18,14 @@ public class Cannon extends Enemy {
 
     private List<Sprite> bullets;
     private long delay2;
-    private  MySoundPool soundPool;
+    private MySoundPool soundPool;
+
+    public Cannon(int width, int height, List<Bitmap> bitmaps, MySoundPool soundPool) {
+        super(width, height, bitmaps);
+        this.soundPool = soundPool;
+        bullets = new ArrayList<>();
+    }
+
     public List<Sprite> getBullets() {
         return bullets;
     }
@@ -27,40 +34,34 @@ public class Cannon extends Enemy {
         this.bullets = bullets;
     }
 
-    public Cannon(int width, int height, List<Bitmap> bitmaps, MySoundPool soundPool) {
-        super(width, height, bitmaps);
-        this.soundPool = soundPool;
-        bullets = new ArrayList<>();
-    }
-
     @Override
     public void logic() {
-        if(isJumping()){
-            move(0,mSpeedY++);
+        if (isJumping()) {
+            move(0, mSpeedY++);
         }
-        if(delay2++>90){
+        if (delay2++ > 90) {
             fire();
-            delay2=0;
+            delay2 = 0;
         }
-        if(bullets!=null){
-            for (int i = 0; i <bullets.size(); i++) {
+        if (bullets != null) {
+            for (int i = 0; i < bullets.size(); i++) {
                 bullets.get(i).logic();
             }
         }
     }
 
-    public void fire(){
-        if(bullets!=null){
+    public void fire() {
+        if (bullets != null) {
             for (int i = 0; i < bullets.size(); i++) {
                 EnemyBullet enemyBullet = (EnemyBullet) bullets.get(i);
-                if(!enemyBullet.isVisiable()){
+                if (!enemyBullet.isVisiable()) {
                     soundPool.play(soundPool.getCannonSound());
                     enemyBullet.setVisiable(true);
                     enemyBullet.setDead(false);
-                    if(enemyBullet.isMirror()){
-                        enemyBullet.setPosition(getX()+getWidth()-5,getY()+6);
-                    }else{
-                        enemyBullet.setPosition(getX()-15,getY()+6);
+                    if (enemyBullet.isMirror()) {
+                        enemyBullet.setPosition(getX() + getWidth() - 5, getY() + 6);
+                    } else {
+                        enemyBullet.setPosition(getX() - 15, getY() + 6);
                     }
 
                 }
@@ -71,7 +72,7 @@ public class Cannon extends Enemy {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        if(bullets!=null){
+        if (bullets != null) {
             for (int i = 0; i < bullets.size(); i++) {
                 bullets.get(i).draw(canvas);
             }

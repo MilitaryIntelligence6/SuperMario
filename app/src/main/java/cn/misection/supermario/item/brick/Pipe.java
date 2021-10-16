@@ -12,16 +12,16 @@ import java.util.List;
 public class Pipe extends Brick {
     private boolean isTransfer;
 
+    public Pipe(int width, int height, List<Bitmap> bitmaps) {
+        super(width, height, bitmaps);
+    }
+
     public boolean isTransfer() {
         return isTransfer;
     }
 
     public void setTransfer(boolean transfer) {
         isTransfer = transfer;
-    }
-
-    public Pipe(int width, int height, List<Bitmap> bitmaps) {
-        super(width, height, bitmaps);
     }
 
     @Override

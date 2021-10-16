@@ -5,5 +5,5 @@ package cn.misection.supermario.enums;
  */
 
 public enum GameState {
-	LOGO,FINISH,LIFTCOUNTER,GAMING,GAMEOVER,TIMEUP,TRANSFER
+    LOGO, FINISH, LIFTCOUNTER, GAMING, GAMEOVER, TIMEUP, TRANSFER
 }

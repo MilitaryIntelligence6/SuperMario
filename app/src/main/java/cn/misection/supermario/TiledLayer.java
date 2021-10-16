@@ -26,6 +26,29 @@ public class TiledLayer {
 
     //region Getter and Setter
 
+    public TiledLayer(Bitmap bitmap, int cols, int rows, int width, int height) {
+        super();
+        setBitmap(bitmap);
+        setHeight(height);
+        setWidth(width);
+        setRows(rows);
+        setCols(cols);
+        mTiledCell = new int[rows][cols];
+        int w = bitmap.getWidth() / width;
+        int h = bitmap.getHeight() / height;
+        mTiledX = new int[w * h + 1];
+        mTiledY = new int[w * h + 1];
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                mTiledX[i * w + j + 1] = j * width;
+                mTiledY[i * w + j + 1] = i * height;
+            }
+        }
+        mSrc = new Rect();
+        mDest = new Rect();
+
+    }
+
     public int getRows() {
         return mRows;
     }
@@ -42,7 +65,7 @@ public class TiledLayer {
         this.mCols = cols;
     }
 
-    public int getTiledCell(int cols,int row) {
+    public int getTiledCell(int cols, int row) {
         return mTiledCell[row][cols];
     }
 
@@ -86,35 +109,11 @@ public class TiledLayer {
         return mHeight;
     }
 
-    public void setHeight(int height) {
-        mHeight = height;
-    }
-
-
 
     //endregion
 
-    public TiledLayer(Bitmap bitmap, int cols ,  int rows , int width, int height) {
-        super();
-        setBitmap(bitmap);
-        setHeight(height);
-        setWidth(width);
-        setRows(rows);
-        setCols(cols);
-        mTiledCell = new int[rows][cols];
-        int w = bitmap.getWidth() / width;
-        int h = bitmap.getHeight() / height;
-        mTiledX = new int[w*h+1];
-        mTiledY = new int[w*h+1];
-        for (int i = 0; i < h; i++) {
-            for (int j = 0; j < w; j++) {
-                mTiledX[i * w + j + 1] = j * width;
-                mTiledY[i * w + j + 1] = i * height;
-            }
-        }
-        mSrc = new Rect();
-        mDest = new Rect();
-
+    public void setHeight(int height) {
+        mHeight = height;
     }
 
     public void move(float x, float y) {
@@ -126,7 +125,7 @@ public class TiledLayer {
     public void draw(Canvas canvas) {
         for (int i = 0; i < getRows(); i++) {
             for (int j = 0; j < getCols(); j++) {
-                int tiledIndex = getTiledCell(j,i);
+                int tiledIndex = getTiledCell(j, i);
                 if (tiledIndex == 0) {
                     continue;
                 }
@@ -135,8 +134,8 @@ public class TiledLayer {
                 int ix = getX() + j * getWidth();
                 int iy = getY() + i * getHeight();
                 mSrc.set(x, y, x + getWidth(), y + getHeight());
-                mDest.set(ix,iy ,
-                        ix+getWidth(), iy + getHeight());
+                mDest.set(ix, iy,
+                        ix + getWidth(), iy + getHeight());
                 canvas.drawBitmap(mBitmap, mSrc, mDest, null);
             }
         }
@@ -146,15 +145,15 @@ public class TiledLayer {
      * 地图的边界处理
      */
     private void outOfBounds() {
-        if(getX()>0){
+        if (getX() > 0) {
             setX(0);
-        }else if(getX()<800-getCols()*getWidth()){
-            setX(800-getCols()*getWidth());
+        } else if (getX() < 800 - getCols() * getWidth()) {
+            setX(800 - getCols() * getWidth());
         }
-        if(getY()>0){
+        if (getY() > 0) {
             setY(0);
-        }else if(getY()<480-getRows()*getWidth()){
-            setY(480-getRows()*getWidth());
+        } else if (getY() < 480 - getRows() * getWidth()) {
+            setY(480 - getRows() * getWidth());
         }
     }
 

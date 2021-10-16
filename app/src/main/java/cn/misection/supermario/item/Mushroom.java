@@ -21,8 +21,8 @@ public class Mushroom extends ItemSprite {
 
     @Override
     public void logic() {
-        if (!isDead()&&isVisiable()) {
-            if(isJumping()) {
+        if (!isDead() && isVisiable()) {
+            if (isJumping()) {
                 move(0, mSpeedY++);
             }
             if (isRunning()) {

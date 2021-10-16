@@ -5,5 +5,5 @@ package cn.misection.supermario.enums;
  */
 
 public enum ItemType {
-    Mushroom,Flower,Coin,Star
+    Mushroom, Flower, Coin, Star
 }

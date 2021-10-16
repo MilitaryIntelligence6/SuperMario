@@ -1,49 +1,5 @@
 package cn.misection.supermario;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.os.SystemClock;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.view.SurfaceView;
-import android.view.WindowManager;
-
-import cn.misection.supermario.audio.MyMusic;
-import cn.misection.supermario.audio.MySoundPool;
-import cn.misection.supermario.enemy.Cannon;
-import cn.misection.supermario.enemy.Chestunt;
-import cn.misection.supermario.enemy.Enemy;
-import cn.misection.supermario.enemy.Turtle;
-import cn.misection.supermario.enums.GameState;
-import cn.misection.supermario.enums.ItemType;
-import cn.misection.supermario.enums.Site;
-import cn.misection.supermario.item.Bullet;
-import cn.misection.supermario.item.Coin;
-import cn.misection.supermario.item.EnemyBullet;
-import cn.misection.supermario.item.Flower;
-import cn.misection.supermario.item.ItemSprite;
-import cn.misection.supermario.item.Mushroom;
-import cn.misection.supermario.item.Star;
-import cn.misection.supermario.item.brick.Brick;
-import cn.misection.supermario.item.brick.Broken;
-import cn.misection.supermario.item.brick.CommonBrick;
-import cn.misection.supermario.item.brick.Pipe;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 import static cn.misection.supermario.enums.GameState.FINISH;
 import static cn.misection.supermario.enums.GameState.GAMEOVER;
 import static cn.misection.supermario.enums.GameState.GAMING;
@@ -65,6 +21,50 @@ import static cn.misection.supermario.enums.Site.左;
 import static cn.misection.supermario.enums.Site.左上;
 import static cn.misection.supermario.enums.Site.左下;
 import static cn.misection.supermario.enums.Site.左中;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.os.SystemClock;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.view.WindowManager;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import cn.misection.supermario.audio.MyMusic;
+import cn.misection.supermario.audio.MySoundPool;
+import cn.misection.supermario.enemy.Cannon;
+import cn.misection.supermario.enemy.Chestunt;
+import cn.misection.supermario.enemy.Enemy;
+import cn.misection.supermario.enemy.Turtle;
+import cn.misection.supermario.enums.GameState;
+import cn.misection.supermario.enums.ItemType;
+import cn.misection.supermario.enums.Site;
+import cn.misection.supermario.item.Bullet;
+import cn.misection.supermario.item.Coin;
+import cn.misection.supermario.item.EnemyBullet;
+import cn.misection.supermario.item.Flower;
+import cn.misection.supermario.item.ItemSprite;
+import cn.misection.supermario.item.Mushroom;
+import cn.misection.supermario.item.Star;
+import cn.misection.supermario.item.brick.Brick;
+import cn.misection.supermario.item.brick.Broken;
+import cn.misection.supermario.item.brick.CommonBrick;
+import cn.misection.supermario.item.brick.Pipe;
 
 
 public class MyView2 extends SurfaceView implements Callback, Runnable {
@@ -131,14 +131,6 @@ public class MyView2 extends SurfaceView implements Callback, Runnable {
     private boolean isTransferReady;
     private boolean isTransferDone;
 
-    public boolean isPause() {
-        return isPause;
-    }
-
-    public void setPause(boolean pause) {
-        isPause = pause;
-    }
-
     //endregion
     //region 通用方法
     public MyView2(Context context) {
@@ -156,6 +148,14 @@ public class MyView2 extends SurfaceView implements Callback, Runnable {
         scaleY = (float) outSize.y / 480;
         myMusic = new MyMusic(context);
         mySoundPool = new MySoundPool(context);
+    }
+
+    public boolean isPause() {
+        return isPause;
+    }
+
+    public void setPause(boolean pause) {
+        isPause = pause;
     }
 
     @Override
@@ -566,12 +566,12 @@ public class MyView2 extends SurfaceView implements Callback, Runnable {
                     thread.start();
                     threadRunning = true;
                 }
-                if(!isTransferDone && mario.getY()>216){
-                    mario.move(0,-3);
-                    if(mario.getY()<=216){
+                if (!isTransferDone && mario.getY() > 216) {
+                    mario.move(0, -3);
+                    if (mario.getY() <= 216) {
                         isTransferDone = true;
                     }
-                }else{
+                } else {
                     mario.logic();
                     if (!mario.isDead()) {
 
@@ -1163,8 +1163,9 @@ public class MyView2 extends SurfaceView implements Callback, Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (lockCanvas != null)
+            if (lockCanvas != null) {
                 holder.unlockCanvasAndPost(lockCanvas);
+            }
         }
     }
 

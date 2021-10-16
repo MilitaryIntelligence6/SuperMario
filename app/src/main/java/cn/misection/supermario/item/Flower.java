@@ -24,9 +24,9 @@ public class Flower extends ItemSprite {
     @Override
     public void logic() {
         super.logic();
-        if(delay2++>10){
+        if (delay2++ > 10) {
             nextFrame();
-            delay2 =0;
+            delay2 = 0;
         }
     }
 }

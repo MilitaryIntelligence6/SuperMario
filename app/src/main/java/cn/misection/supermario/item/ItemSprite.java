@@ -2,9 +2,9 @@ package cn.misection.supermario.item;
 
 import android.graphics.Bitmap;
 
-import cn.misection.supermario.Sprite;
-
 import java.util.List;
+
+import cn.misection.supermario.Sprite;
 
 /**
  * Created by Suramire on 2017/11/30.
@@ -27,8 +27,8 @@ public class ItemSprite extends Sprite {
 
     @Override
     public void logic() {
-        if (!isDead()&&isVisiable()) {
-            if(isJumping()) {
+        if (!isDead() && isVisiable()) {
+            if (isJumping()) {
                 move(0, mSpeedY++);
             }
             if (isRunning()) {

@@ -15,15 +15,15 @@ public class MainActivity extends AppCompatActivity {
     private MyView2 view;
 
     @Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         view = new MyView2(this);
         setContentView(view);
 
-	}
+    }
 
-	@Override
-	public void onBackPressed() {
+    @Override
+    public void onBackPressed() {
         //响应返回按钮事件
         view.setPause(true);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                    	setContentView(new View(MainActivity.this));
+                        setContentView(new View(MainActivity.this));
                         finish();
                     }
                 })
@@ -45,5 +45,5 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .show();
 //		super.onBackPressed();
-	}
+    }
 }

@@ -22,7 +22,7 @@ public class Star extends ItemSprite {
     @Override
     public void logic() {
         super.logic();
-        if(isVisiable()){
+        if (isVisiable()) {
             nextFrame();
         }
     }
