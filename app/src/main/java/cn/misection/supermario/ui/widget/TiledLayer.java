@@ -1,4 +1,4 @@
-package cn.misection.supermario;
+package cn.misection.supermario.ui.widget;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

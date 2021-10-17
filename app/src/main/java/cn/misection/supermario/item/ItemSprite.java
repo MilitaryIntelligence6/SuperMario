@@ -4,7 +4,8 @@ import android.graphics.Bitmap;
 
 import java.util.List;
 
-import cn.misection.supermario.Sprite;
+import cn.misection.supermario.sprite.Sprite;
+
 
 /**
  * @author javaman

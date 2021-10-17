@@ -1,4 +1,4 @@
-package cn.misection.supermario;
+package cn.misection.supermario.sprite;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import java.util.List;
 
 import cn.misection.supermario.enums.Site;
+import cn.misection.supermario.ui.widget.TiledLayer;
 
 /**
  *

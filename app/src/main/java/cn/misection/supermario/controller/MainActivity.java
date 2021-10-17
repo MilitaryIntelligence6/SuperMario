@@ -1,4 +1,4 @@
-package cn.misection.supermario;
+package cn.misection.supermario.controller;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import cn.misection.supermario.ui.view.MyView2;
 
 /**
  * @author javaman

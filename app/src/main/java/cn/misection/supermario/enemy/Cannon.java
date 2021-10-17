@@ -6,9 +6,9 @@ import android.graphics.Canvas;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.misection.supermario.Sprite;
 import cn.misection.supermario.audio.MySoundPool;
 import cn.misection.supermario.item.EnemyBullet;
+import cn.misection.supermario.sprite.Sprite;
 
 /**
  * 敌人类-大炮

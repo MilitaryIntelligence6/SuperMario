@@ -1,4 +1,4 @@
-package cn.misection.supermario;
+package cn.misection.supermario.ui.view;
 
 import static cn.misection.supermario.enums.GameState.FINISH;
 import static cn.misection.supermario.enums.GameState.GAMEOVER;
@@ -65,6 +65,9 @@ import cn.misection.supermario.item.brick.Brick;
 import cn.misection.supermario.item.brick.Broken;
 import cn.misection.supermario.item.brick.CommonBrick;
 import cn.misection.supermario.item.brick.Pipe;
+import cn.misection.supermario.sprite.Mario;
+import cn.misection.supermario.sprite.Sprite;
+import cn.misection.supermario.ui.widget.TiledLayer;
 
 
 /**
