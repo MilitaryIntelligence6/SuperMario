@@ -27,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         //响应返回按钮事件
         mBinding.gameView.setPause(true);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("提示")
+        new AlertDialog.Builder(this).setTitle("提示")
                 .setMessage("是否退出游戏")
                 .setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override

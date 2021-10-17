@@ -7,29 +7,32 @@ import android.util.Log;
 
 import java.io.IOException;
 
+/**
+ * @author javaman
+ */
 public class MySoundPool {
 
-    private Context mContext;
-    private SoundPool mSoundPool;
-    private int hitbrickSound;
-    private int coinSound;
-    private int hurryUpSound;
-    private int hitEnemySound;
-    private int jumpSound;
-    private int cannotbreakSound;
-    private int hurtSound;
-    private int cannonSound;
-    private int transferSound;
-    private int brokenSound;
-    private int itemSound;
+    private final Context mContext;
+    private final SoundPool mSoundPool;
+    private final int hitBrickSound;
+    private final int coinSound;
+    private final int hurryUpSound;
+    private final int hitEnemySound;
+    private final int jumpSound;
+    private final int cannotBreakSound;
+    private final int hurtSound;
+    private final int cannonSound;
+    private final int transferSound;
+    private final int brokenSound;
+    private final int itemSound;
 
     public MySoundPool(Context mContext) {
         super();
         this.mContext = mContext;
         mSoundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
-        cannotbreakSound = getSoundId("sounds/cannotbreak.mp3");
+        cannotBreakSound = getSoundId("sounds/cannotbreak.mp3");
         itemSound = getSoundId("sounds/mushroom.mp3");
-        hitbrickSound = getSoundId("sounds/duang.mp3");
+        hitBrickSound = getSoundId("sounds/duang.mp3");
         coinSound = getSoundId("sounds/coin.mp3");
         hurryUpSound = getSoundId("sounds/hurryup.mp3");
         jumpSound = getSoundId("sounds/jump.mp3");
@@ -38,8 +41,6 @@ public class MySoundPool {
         cannonSound = getSoundId("sounds/cannon.mp3");
         transferSound = getSoundId("sounds/transfer.mp3");
         brokenSound = getSoundId("sounds/broken.mp3");
-
-
     }
 
     public int getBrokenSound() {
@@ -58,8 +59,8 @@ public class MySoundPool {
         return hurtSound;
     }
 
-    public int getCannotbreakSound() {
-        return cannotbreakSound;
+    public int getCannotBreakSound() {
+        return cannotBreakSound;
     }
 
     public int getHitEnemySound() {
@@ -78,8 +79,8 @@ public class MySoundPool {
         return coinSound;
     }
 
-    public int getHitbrickSound() {
-        return hitbrickSound;
+    public int getHitBrickSound() {
+        return hitBrickSound;
     }
 
     public int getItemSound() {

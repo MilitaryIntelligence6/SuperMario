@@ -9,10 +9,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3973b30-e0e5-4d6d-a6d5-d6cf0a3edb9e" name="默认变更列表" comment="重构;">
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+    <list default="true" id="c3973b30-e0e5-4d6d-a6d5-d6cf0a3edb9e" name="默认变更列表" comment="dataBinding;">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MyMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MyMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MySoundPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MySoundPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/controller/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/controller/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/ui/view/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/ui/view/GameView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1634395712170</updated>
-      <workItem from="1634445759591" duration="3873000" />
+      <workItem from="1634445759591" duration="6322000" />
     </task>
     <task id="LOCAL-00001" summary="重构;">
       <created>1634396986446</created>
@@ -128,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634449655388</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="dataBinding;">
+      <created>1634450651875</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1634450651875</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +159,7 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="重构;" />
-    <option name="LAST_COMMIT_MESSAGE" value="重构;" />
+    <MESSAGE value="dataBinding;" />
+    <option name="LAST_COMMIT_MESSAGE" value="dataBinding;" />
   </component>
 </project>

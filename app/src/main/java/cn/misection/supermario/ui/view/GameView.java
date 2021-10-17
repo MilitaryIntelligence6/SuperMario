@@ -1788,13 +1788,13 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                             } else {
                                 sprite1.setSpeedY(-4);
                                 sprite1.setJumping(true);
-                                mySoundPool.play(mySoundPool.getCannotbreakSound());
+                                mySoundPool.play(mySoundPool.getCannotBreakSound());
                             }
                         }
                     } else if (sprite1 instanceof Brick) {
                         sprite0.setSpeedY(Math.abs(sprite0.getSpeedY()));
                         if (((Brick) sprite1).hasItem()) {
-                            mySoundPool.play(mySoundPool.getHitbrickSound());
+                            mySoundPool.play(mySoundPool.getHitBrickSound());
                             sprite1.setSpeedY(-4);
                             sprite1.setJumping(true);
                         }

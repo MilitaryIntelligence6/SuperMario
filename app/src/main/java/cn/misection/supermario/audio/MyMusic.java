@@ -6,10 +6,13 @@ import android.media.MediaPlayer;
 
 import java.io.IOException;
 
+/**
+ * @author javaman
+ */
 public class MyMusic {
 
-    private Context mContext;
-    private MediaPlayer mediaPlayer;
+    private final Context mContext;
+    private final MediaPlayer mediaPlayer;
     private String mFileName = "";
 
     public MyMusic(Context mContext) {
