@@ -3,31 +3,30 @@ package cn.misection.supermario.controller;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import cn.misection.supermario.ui.view.GameView;
+import androidx.databinding.DataBindingUtil;
+import cn.misection.supermario.R;
+import cn.misection.supermario.databinding.ActivityMainBinding;
 
 /**
  * @author javaman
  */
 public class MainActivity extends AppCompatActivity {
 
-    private GameView view;
+    private ActivityMainBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        view = new GameView(this);
-        setContentView(view);
-
+        setContentView(R.layout.activity_main);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
     }
 
     @Override
     public void onBackPressed() {
         //响应返回按钮事件
-        view.setPause(true);
+        mBinding.gameView.setPause(true);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("提示")
                 .setMessage("是否退出游戏")
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        view.setPause(false);
+                        mBinding.gameView.setPause(false);
                     }
                 })
                 .setCancelable(false)
