@@ -181,23 +181,23 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                         stateDelay_logo = 0;
                         coinNumber = 0;
                     }
+                    break;
                 }
-                break;
                 case FINISH: {
                     if (stateDelay_finish > 100) {
                         gameState = LOGO;
                         lifeNumber = 3;
                         stateDelay_finish = 0;
                     }
+                    break;
                 }
-                break;
-                case GAMEOVER: {
+                case GAME_OVER: {
                     if (stateDelay_gameover > 40) {
                         gameState = LOGO;
                         lifeNumber = 3;
                         stateDelay_gameover = 0;
                     }
-
+                    // FIXME: 2021/10/17 missing break;
                 }
                 case GAMING: {
                     int pointCount = event.getPointerCount();
@@ -243,8 +243,10 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                             performClick();
                         }
                     }
+                    break;
                 }
-                break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + gameState);
             }
 
         }
@@ -550,8 +552,8 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                         gameState = GAMING;
                     }
                 }
+                break;
             }
-            break;
             case GAMING: {
                 if (!threadRunning && isInited) {
                     thread.start();
@@ -592,12 +594,12 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 }
 
                 myTime();
+                break;
             }
-            break;
-            case LIFTCOUNTER: {
+            case LIFT_COUNTER: {
                 myMusic.stop();
                 if (lifeNumber < 1) {
-                    gameState = GAMEOVER;
+                    gameState = GAME_OVER;
                 } else {
                     if (stateDelay_lifecounter++ > 50) {
                         gameState = GAMING;
@@ -605,24 +607,24 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                         stateDelay_lifecounter = 0;
                     }
                 }
+                break;
             }
-            break;
-            case GAMEOVER: {
+            case GAME_OVER: {
                 stateDelay_gameover++;
 
+                break;
             }
-            break;
             case FINISH: {
                 myMusic.play("music/finish.mp3", false);
                 threadRunning = false;
                 stateDelay_finish++;
+                break;
             }
-            break;
             case LOGO: {
                 stateDelay_logo++;
                 myMusic.stop();
+                break;
             }
-            break;
         }
     }
 
@@ -788,7 +790,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 mario.setSpeedY(-16);
             } else {
                 lifeNumber--;
-                gameState = LIFTCOUNTER;
+                gameState = LIFT_COUNTER;
             }
         }
 
@@ -958,28 +960,28 @@ public class GameView extends SurfaceView implements Callback, Runnable {
         //创建砖块
         Brick brick = new Brick(40, 40, brickBitmaps);
         brick.setPosition(40 * itemBrickPositions[0][0], 40 * itemBrickPositions[0][1]);
-        brick.createItem(true, flowerBitmaps, ItemType.Flower);
+        brick.createItem(true, flowerBitmaps, ItemType.FLOWER);
         items.add(brick.getItemSprite());
         brick.setVisiable(true);
         bricks.add(brick);
         Brick brick2 = new Brick(40, 40, brickBitmaps);
         brick2.setPosition(40 * itemBrickPositions[1][0], 40 * itemBrickPositions[1][1]);
 
-        brick2.createItem(true, mushroomBitmap, ItemType.Mushroom);
+        brick2.createItem(true, mushroomBitmap, ItemType.MUSHROOM);
         items.add(brick2.getItemSprite());
         brick2.setVisiable(true);
         bricks.add(brick2);
 
         Brick brick3 = new Brick(40, 40, brickBitmaps);
         brick3.setPosition(40 * itemBrickPositions[2][0], 40 * itemBrickPositions[2][1]);
-        brick3.createItem(true, starBitmaps, ItemType.Star);
+        brick3.createItem(true, starBitmaps, ItemType.STAR);
         items.add(brick3.getItemSprite());
         brick3.setVisiable(true);
         bricks.add(brick3);
 
         Brick brick4 = new Brick(40, 40, brickBitmaps);
         brick4.setPosition(40 * itemBrickPositions[3][0], 40 * itemBrickPositions[3][1]);
-        brick4.createItem(true, flowerBitmaps, ItemType.Flower);
+        brick4.createItem(true, flowerBitmaps, ItemType.FLOWER);
         items.add(brick4.getItemSprite());
         brick4.setVisiable(true);
         bricks.add(brick4);
@@ -1041,7 +1043,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                     lockCanvas.drawBitmap(logoBitmap, 0, 0, null);
                 }
                 break;
-                case GAMEOVER: {
+                case GAME_OVER: {
                     lockCanvas.drawColor(Color.BLACK);
                     lockCanvas.drawBitmap(gameoverbitmap,
                             400 - gameoverbitmap.getWidth() / 2,
@@ -1052,7 +1054,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                     lockCanvas.drawBitmap(finishBitmap, 0, 0, null);
                 }
                 break;
-                case LIFTCOUNTER: {
+                case LIFT_COUNTER: {
                     lockCanvas.drawColor(Color.BLACK);
                     lockCanvas.drawBitmap(marioBitmap, 400 - marioBitmap.getWidth(),
                             250 - marioBitmap.getHeight(), null);
@@ -1347,7 +1349,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                         if (mario.isInvincible()) {
                             updateScore(100);
                             sprite.setVisiable(false);
-                        } else if (mario.isJumping() && mario.siteCollisionWith(sprite, 下) &&
+                        } else if (mario.isJumping() && mario.siteCollisionWith(sprite, DOWN) &&
                                 !sprite.isDead()) {
                             mySoundPool.play(mySoundPool.getHitEnemySound());
                             //杀死敌人时获得100积分
@@ -1581,9 +1583,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
     private void spriteCollisionMap(Sprite sprite) {
         if (sprite.isVisiable() && !sprite.isDead()) {
             //头顶碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, 上左) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 上中) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 上右)) {
+            if (sprite.siteCollisionWith(tiledLayer_peng01, UP_LEFT) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, UP_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, UP_RIGHT)) {
                 if (sprite instanceof Bullet) {
                     sprite.setVisiable(false);
                 } else {
@@ -1591,9 +1593,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 }
             }
             //脚部碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, 下左) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 下中) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 下右)) {
+            if (sprite.siteCollisionWith(tiledLayer_peng01, DOWN_LEFT) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, DOWN_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, DOWN_RIGHT)) {
                 //乌龟特殊处理
                 if (sprite instanceof Turtle) {
                     if (((Turtle) sprite).isCanFly()) {
@@ -1629,9 +1631,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 sprite.setSpeedY(0);
             }
             //左边碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, 左上) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 左中) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 左下)) {
+            if (sprite.siteCollisionWith(tiledLayer_peng01, LEFT_UP) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, LEFT_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, LEFT_DOWN)) {
                 if (sprite instanceof Bullet) {
                     sprite.setVisiable(false);
                 } else {
@@ -1640,9 +1642,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 }
             }
             //右边碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, 右上) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 右中) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 右下)) {
+            if (sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_UP) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_DOWN)) {
                 if (sprite instanceof Bullet) {
                     sprite.setVisiable(false);
                 } else {
@@ -1654,9 +1656,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
         } else if (sprite.isVisiable() && sprite.isDead() && sprite instanceof Turtle) {
             if (!((Turtle) sprite).isOverturn()) {
                 //脚部碰撞
-                if (sprite.siteCollisionWith(tiledLayer_peng01, 下左) ||
-                        sprite.siteCollisionWith(tiledLayer_peng01, 下中) ||
-                        sprite.siteCollisionWith(tiledLayer_peng01, 下右)) {
+                if (sprite.siteCollisionWith(tiledLayer_peng01, DOWN_LEFT) ||
+                        sprite.siteCollisionWith(tiledLayer_peng01, DOWN_MIDDLE) ||
+                        sprite.siteCollisionWith(tiledLayer_peng01, DOWN_RIGHT)) {
                     //乌龟特殊处理
                     sprite.setJumping(false);
                     //坐标修正
@@ -1675,17 +1677,17 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 sprite.setSpeedY(0);
             }
             //左边碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, 左上) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 左中) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 左下)) {
+            if (sprite.siteCollisionWith(tiledLayer_peng01, LEFT_UP) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, LEFT_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, LEFT_DOWN)) {
                 sprite.setMirror(true);
                 sprite.move(10, 0);
 
             }
             //右边碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, 右上) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 右中) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, 右下)) {
+            if (sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_UP) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_DOWN)) {
                 sprite.setMirror(false);
                 sprite.move(-10, 0);
 
@@ -1738,7 +1740,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
         //精灵可见且非死亡状态
         if (sprite0.isVisiable() && !sprite0.isDead() && sprite1.isVisiable() && !sprite1.isDead()) {
             //0底部碰撞1
-            if (sprite0.siteCollisionWith(sprite1, 下)) {
+            if (sprite0.siteCollisionWith(sprite1, DOWN)) {
                 //乌龟特殊处理
                 if (sprite0 instanceof Turtle) {
                     sprite0.setJumping(true);
@@ -1774,7 +1776,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                                 sprite0.setPosition(sprite0.getX(), newY);
                             }
             }
-            if (sprite0.siteCollisionWith(sprite1, Site.上)) {
+            if (sprite0.siteCollisionWith(sprite1, Site.UP)) {
                 //玛丽顶砖块
                 if (sprite0 instanceof Mario && sprite0.isJumping()) {
                     if (sprite1 instanceof CommonBrick) {
@@ -1808,7 +1810,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 }
 
             }
-            if (sprite0.siteCollisionWith(sprite1, 左)) {
+            if (sprite0.siteCollisionWith(sprite1, LEFT)) {
                 if (sprite0 instanceof Bullet) {
                     sprite0.setVisiable(false);
                 } else {
@@ -1816,7 +1818,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                     sprite0.move(4, 0);
                 }
             }
-            if (sprite0.siteCollisionWith(sprite1, 右)) {
+            if (sprite0.siteCollisionWith(sprite1, RIGHT)) {
                 if (sprite0 instanceof Bullet) {
                     sprite0.setVisiable(false);
                 } else {
@@ -1829,7 +1831,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 !sprite1.isDead() && sprite0 instanceof Turtle && !(sprite1 instanceof Turtle)) {
             Log.e(TAG, "sptiteCollisionSprite: 龟壳碰撞");
             //0底部碰撞1
-            if (sprite0.siteCollisionWith(sprite1, 下)) {
+            if (sprite0.siteCollisionWith(sprite1, DOWN)) {
                 sprite0.setJumping(false);
                 //坐标修正
                 //取得脚部坐标
@@ -1840,11 +1842,11 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                         - sprite0.getHeight();
                 sprite0.setPosition(sprite0.getX(), newY);
             }
-            if (sprite0.siteCollisionWith(sprite1, 左)) {
+            if (sprite0.siteCollisionWith(sprite1, LEFT)) {
                 sprite0.setMirror(true);
                 sprite0.move(10, 0);
             }
-            if (sprite0.siteCollisionWith(sprite1, 右)) {
+            if (sprite0.siteCollisionWith(sprite1, RIGHT)) {
 
                 sprite0.setMirror(false);
                 sprite0.move(-10, 0);

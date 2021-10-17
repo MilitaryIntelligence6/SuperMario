@@ -2,17 +2,14 @@ package cn.misection.supermario.enemy;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import cn.misection.supermario.sprite.Sprite;
 
 import java.util.List;
 
-import cn.misection.supermario.sprite.Sprite;
-
 /**
- *
  * @author javaman
  * @date 2017/11/9
  */
-
 public class Enemy extends Sprite {
 
     protected int delay;

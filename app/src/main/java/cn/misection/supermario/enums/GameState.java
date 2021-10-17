@@ -1,7 +1,6 @@
 package cn.misection.supermario.enums;
 
 /**
- *
  * @author javaman
  * @date 2017/12/3
  */
@@ -12,10 +11,10 @@ public enum GameState {
      */
     LOGO,
     FINISH,
-    LIFTCOUNTER,
+    LIFT_COUNTER,
     GAMING,
-    GAMEOVER,
-    TIMEUP,
+    GAME_OVER,
+    TIME_UP,
     TRANSFER,
     ;
 }

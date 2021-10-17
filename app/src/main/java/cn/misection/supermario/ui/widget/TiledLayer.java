@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 
 /**
- *
  * @author javaman
  * @date 2017/10/18
  */

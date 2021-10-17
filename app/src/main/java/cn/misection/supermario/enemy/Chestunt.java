@@ -6,9 +6,9 @@ import java.util.List;
 
 /**
  * 敌人类-板栗
+ *
  * @author javaman
  */
-
 public class Chestunt extends Enemy {
 
     public Chestunt(int width, int height, List<Bitmap> bitmaps) {

@@ -15,9 +15,9 @@ public class MyMusic {
     private final MediaPlayer mediaPlayer;
     private String mFileName = "";
 
-    public MyMusic(Context mContext) {
+    public MyMusic(Context context) {
         super();
-        this.mContext = mContext;
+        this.mContext = context;
         mediaPlayer = new MediaPlayer();
     }
 
@@ -29,9 +29,11 @@ public class MyMusic {
                 mediaPlayer.reset();
                 mFileName = fileName;
                 AssetFileDescriptor fd = mContext.getAssets().openFd(fileName);
-                mediaPlayer.setDataSource(fd.getFileDescriptor(),
+                mediaPlayer.setDataSource(
+                        fd.getFileDescriptor(),
                         fd.getStartOffset(),
-                        fd.getLength());
+                        fd.getLength()
+                );
                 mediaPlayer.setLooping(looping);
                 mediaPlayer.prepare();
                 mediaPlayer.start();
@@ -54,6 +56,7 @@ public class MyMusic {
                 mediaPlayer.pause();
             }
         } catch (IllegalStateException e) {
+            e.printStackTrace();
         }
     }
 

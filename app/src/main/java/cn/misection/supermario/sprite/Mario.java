@@ -4,11 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.SystemClock;
+import cn.misection.supermario.item.Bullet;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.misection.supermario.item.Bullet;
 
 /**
  * @author javaman
@@ -17,9 +16,9 @@ import cn.misection.supermario.item.Bullet;
  */
 public class Mario extends Sprite {
 
-/*
- * region Fields
- */
+    /*
+     * region Fields
+     */
 
     /**
      * 无敌倒计时线程

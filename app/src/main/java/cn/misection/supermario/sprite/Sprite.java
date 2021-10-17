@@ -4,14 +4,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-
-import java.util.List;
-
 import cn.misection.supermario.enums.Site;
 import cn.misection.supermario.ui.widget.TiledLayer;
 
+import java.util.List;
+
 /**
- *
  * @author javaman
  * @date 2017/10/9
  * 精灵类
@@ -22,9 +20,9 @@ import cn.misection.supermario.ui.widget.TiledLayer;
 public class Sprite {
 
 
-/*
- * region 字段
- */
+    /*
+     * region 字段
+     */
 
     /**
      * y轴速度
@@ -392,69 +390,75 @@ public class Sprite {
         int siteX = 0;
         int siteY = 0;
         switch (site) {
-            case 上左: {
+            case UP_LEFT: {
                 siteX = getX() + getWidth() / 4;
                 siteY = getY();
+                break;
             }
-            break;
-            case 上中: {
+            case UP_MIDDLE: {
                 siteX = getX() + getWidth() / 2;
                 siteY = getY();
+                break;
             }
-            break;
-            case 上右: {
+            case UP_RIGHT: {
                 siteX = getX() + 3 * getWidth() / 4;
                 siteY = getY();
+                break;
             }
-            break;
 
-            case 下左: {
+            case DOWN_LEFT: {
                 siteX = getX() + getWidth() / 4;
                 siteY = getY() + getHeight();
+                break;
             }
-            break;
-            case 下中: {
+            case DOWN_MIDDLE: {
                 siteX = getX() + getWidth() / 2;
                 siteY = getY() + getHeight();
+                break;
             }
-            break;
-            case 下右: {
+            case DOWN_RIGHT: {
                 siteX = getX() + 3 * getWidth() / 4;
                 siteY = getY() + getHeight();
+                break;
             }
-            break;
 
-            case 左上: {
+            case LEFT_UP: {
                 siteX = getX();
                 siteY = getY() + getHeight() / 4;
+                break;
             }
-            break;
-            case 左中: {
+            case LEFT_MIDDLE: {
                 siteX = getX();
                 siteY = getY() + getHeight() / 2;
+                break;
             }
-            break;
-            case 左下: {
+            case LEFT_DOWN: {
                 siteX = getX();
                 siteY = getY() + 3 * getHeight() / 4;
+                break;
             }
-            break;
-
-            case 右上: {
+            case RIGHT_UP: {
                 siteX = getX() + getWidth();
                 siteY = getY() + getHeight() / 4;
+                break;
             }
-            break;
-            case 右中: {
+            case RIGHT_MIDDLE: {
                 siteX = getX() + getWidth();
                 siteY = getY() + getHeight() / 2;
+                break;
             }
-            break;
-            case 右下: {
+            case RIGHT_DOWN: {
                 siteX = getX() + getWidth();
                 siteY = getY() + 3 * getHeight() / 4;
+                break;
             }
-            break;
+            case UP:
+            case LEFT:
+            case RIGHT:
+            case DOWN:
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + site);
         }
         //在地图上的坐标
         int mapX = siteX - tiledLayer.getX();
@@ -496,7 +500,7 @@ public class Sprite {
         int y = getY();
 
         switch (site) {
-            case 下: {
+            case DOWN: {
 
                 if (collisionWith(sprite)
                         && sy > y
@@ -506,9 +510,9 @@ public class Sprite {
                 ) {
                     return true;
                 }
+                break;
             }
-            break;
-            case 上: {
+            case UP: {
 
                 if (collisionWith(sprite)
                         && sy < y
@@ -518,27 +522,27 @@ public class Sprite {
                 ) {
                     return true;
                 }
+                break;
             }
-            break;
 
-            case 右: {
+            case RIGHT: {
                 if (collisionWith(sprite)
                         && x + w == sx
                         && sy - y < h//只和同一行砖块左右碰撞
                 ) {
                     return true;
                 }
+                break;
             }
-            break;
-            case 左: {
+            case LEFT: {
                 if (collisionWith(sprite)
                         && sx + sw == x
                         && sy - y < h//只和同一行砖块左右碰撞
                 ) {
                     return true;
                 }
+                break;
             }
-            break;
         }
 
         return false;

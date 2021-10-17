@@ -1,10 +1,9 @@
 package cn.misection.supermario.item;
 
 import android.graphics.Bitmap;
+import cn.misection.supermario.sprite.Sprite;
 
 import java.util.List;
-
-import cn.misection.supermario.sprite.Sprite;
 
 
 /**

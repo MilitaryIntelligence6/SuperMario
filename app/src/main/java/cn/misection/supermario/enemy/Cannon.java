@@ -2,19 +2,18 @@ package cn.misection.supermario.enemy;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import cn.misection.supermario.audio.MySoundPool;
 import cn.misection.supermario.item.EnemyBullet;
 import cn.misection.supermario.sprite.Sprite;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 敌人类-大炮
+ *
  * @author javaman
  */
-
 public class Cannon extends Enemy {
 
     private List<Sprite> bullets;
@@ -53,8 +52,8 @@ public class Cannon extends Enemy {
 
     public void fire() {
         if (bullets != null) {
-            for (int i = 0; i < bullets.size(); i++) {
-                EnemyBullet enemyBullet = (EnemyBullet) bullets.get(i);
+            for (Sprite bullet : bullets) {
+                EnemyBullet enemyBullet = (EnemyBullet) bullet;
                 if (!enemyBullet.isVisiable()) {
                     soundPool.play(soundPool.getCannonSound());
                     enemyBullet.setVisiable(true);
@@ -74,8 +73,8 @@ public class Cannon extends Enemy {
     public void draw(Canvas canvas) {
         super.draw(canvas);
         if (bullets != null) {
-            for (int i = 0; i < bullets.size(); i++) {
-                bullets.get(i).draw(canvas);
+            for (Sprite bullet : bullets) {
+                bullet.draw(canvas);
             }
         }
     }

@@ -9,14 +9,26 @@ public enum Site {
     /**
      * 方向;
      */
-    上左, 上中, 上右,
-    左上, 右上,
-    左中, 右中,
-    左下, 右下,
-    下左, 下中, 下右,
+    UP_LEFT,
+    UP_MIDDLE,
+    UP_RIGHT,
 
-    上,
-    左, 右,
-    下
+    LEFT_UP,
+    RIGHT_UP,
 
+    LEFT_MIDDLE,
+    RIGHT_MIDDLE,
+
+    LEFT_DOWN,
+    RIGHT_DOWN,
+
+    DOWN_LEFT,
+    DOWN_MIDDLE,
+    DOWN_RIGHT,
+
+    UP,
+    LEFT,
+    RIGHT,
+    DOWN,
+    ;
 }

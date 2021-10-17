@@ -9,11 +9,23 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3973b30-e0e5-4d6d-a6d5-d6cf0a3edb9e" name="默认变更列表" comment="dataBinding;">
+    <list default="true" id="c3973b30-e0e5-4d6d-a6d5-d6cf0a3edb9e" name="默认变更列表" comment="重构;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MyMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MyMusic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MySoundPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MySoundPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/controller/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/controller/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Cannon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Cannon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Chestunt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Chestunt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Turtle.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Turtle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/ItemType.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/ItemType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/Site.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/Site.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/ItemSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/ItemSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Brick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Broken.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/brick/Broken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/sprite/Mario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/sprite/Mario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/sprite/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/sprite/Sprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/ui/view/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/ui/view/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/ui/widget/TiledLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/ui/widget/TiledLayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +104,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1634395712170</updated>
-      <workItem from="1634445759591" duration="6322000" />
+      <workItem from="1634445759591" duration="6419000" />
+      <workItem from="1634455544266" duration="1240000" />
     </task>
     <task id="LOCAL-00001" summary="重构;">
       <created>1634396986446</created>
@@ -136,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634450651875</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="重构;">
+      <created>1634455306848</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1634455306848</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,8 +178,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="重构;" />
     <MESSAGE value="dataBinding;" />
-    <option name="LAST_COMMIT_MESSAGE" value="dataBinding;" />
+    <MESSAGE value="重构;" />
+    <option name="LAST_COMMIT_MESSAGE" value="重构;" />
   </component>
 </project>

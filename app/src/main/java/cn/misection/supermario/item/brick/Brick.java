@@ -1,18 +1,14 @@
 package cn.misection.supermario.item.brick;
 
 import android.graphics.Bitmap;
+import cn.misection.supermario.enums.ItemType;
+import cn.misection.supermario.item.*;
 
 import java.util.List;
 
-import cn.misection.supermario.enums.ItemType;
-import cn.misection.supermario.item.Coin;
-import cn.misection.supermario.item.Flower;
-import cn.misection.supermario.item.ItemSprite;
-import cn.misection.supermario.item.Mushroom;
-import cn.misection.supermario.item.Star;
-
 /**
  * 砖块类
+ *
  * @author javaman
  */
 public class Brick extends ItemSprite {
@@ -104,13 +100,13 @@ public class Brick extends ItemSprite {
         setItemType(type);
         if (e) {
             switch (type) {
-                case Mushroom: {
+                case MUSHROOM: {
                     //蘑菇默认往右移动
                     itemSprite = new Mushroom(bitmap);
                     itemSprite.setMirror(true);
                 }
                 break;
-                case Coin: {
+                case COIN: {
 
                 }
                 break;
@@ -132,19 +128,19 @@ public class Brick extends ItemSprite {
         if (e) {
             switch (type) {
 
-                case Coin: {
+                case COIN: {
                     itemSprite = new Coin(40, 40, bitmaps);
                     itemSprite.setRunning(false);
                 }
                 break;
-                case Star: {
+                case STAR: {
                     itemSprite = new Star(28, 30, bitmaps);
                     itemSprite.setRunning(true);
                     itemSprite.setMirror(true);
                 }
                 break;
 
-                case Flower: {
+                case FLOWER: {
                     //花默认不移动
                     itemSprite = new Flower(32, 32, bitmaps);
                     itemSprite.setPosition(getX() + 4, getY() - 32);

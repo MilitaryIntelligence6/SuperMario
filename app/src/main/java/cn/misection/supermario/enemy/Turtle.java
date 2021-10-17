@@ -11,7 +11,6 @@ import java.util.List;
  *
  * @author javaman
  */
-
 public class Turtle extends Enemy {
 
     private final Thread zeroDamagThread;
