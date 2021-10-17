@@ -2,7 +2,6 @@ package cn.misection.supermario.controller;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.View;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        setContentView(new View(MainActivity.this));
+//                        setContentView(new View(MainActivity.this));
                         finish();
                     }
                 })

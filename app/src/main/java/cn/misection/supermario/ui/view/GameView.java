@@ -46,27 +46,27 @@ public class GameView extends SurfaceView implements Callback, Runnable {
     private final MyMusic myMusic;
     private final MySoundPool mySoundPool;
     private final SharedPreferences sp;
+    private final SurfaceHolder holder;
+    private final float scaleX;
+    private final float scaleY;
+    private final Context context;
     //region Field
-    private boolean isPause;
-    private SurfaceHolder holder;
-    private boolean isRunning;
+    private boolean pause;
+    private boolean running;
     private Canvas lockCanvas;
-    private float scaleX;
-    private float scaleY;
-    private Context context;
     private Bitmap aBitmap;
     private Bitmap bBitmap;
     private Bitmap leftBitmap;
     private Bitmap rightBitmap;
     private RectF rectF;
     private Mario mario;
-    private TiledLayer tiledLayer_peng01;
-    private Bitmap gameoverbitmap;
+    private TiledLayer tiledLayerPeng01;
+    private Bitmap gameOverBitmap;
     private List<Sprite> chestunts;
     private List<Bitmap> chestuntBitmaps;
-    private boolean isEnemyShown1;
-    private boolean isEnemyShown2;
-    private boolean isEnemyShown3;
+    private boolean enemyShown1;
+    private boolean enemyShown2;
+    private boolean enemyShown3;
 
     /**
      * 用于记录分数;
@@ -75,7 +75,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
     private Paint mPaint;
     private Bitmap marioBitmap;
     private int lifeNumber = 3;
-    private boolean isInited;
+    private boolean inited;
     private String scoreString;
     private int delay;
     private Bitmap logoBitmap;
@@ -95,12 +95,12 @@ public class GameView extends SurfaceView implements Callback, Runnable {
      * 表示当前游戏状态;
      */
     private GameState gameState;
-    private int stateDelay_lifecounter;
-    private int stateDelay_finish;
-    private int stateDelay_logo;
-    private int stateDelay_gameover;
-    private boolean isFirstRun;
-    private boolean isMaioDieSoundPlayed;
+    private int stateDelayLifeCounter;
+    private int stateDelayFinish;
+    private int stateDelayLogo;
+    private int stateDelayGameOver;
+    private boolean firstRun;
+    private boolean maioDieSoundPlayed;
     private List<Sprite> commonBricks;
     private TiledLayer tiledLayer_cover;
     private Bitmap enemyBulletBitmap;
@@ -120,7 +120,6 @@ public class GameView extends SurfaceView implements Callback, Runnable {
     //endregion
     //region 通用方法
     public GameView(Context context) {
-//        super(context);
         this(context, null);
     }
 
@@ -141,17 +140,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
         mySoundPool = new MySoundPool(context);
     }
 
-    public boolean isPause() {
-        return isPause;
-    }
-
-    public void setPause(boolean pause) {
-        isPause = pause;
-    }
-
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        isRunning = true;
+        running = true;
         new Thread(this).start();
     }
 
@@ -161,7 +152,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        isRunning = false;
+        running = false;
         myMusic.stop();
         threadRunning = false;
         //游戏退出时记录最高分
@@ -176,26 +167,26 @@ public class GameView extends SurfaceView implements Callback, Runnable {
         if (gameState != null) {
             switch (gameState) {
                 case LOGO: {
-                    if (stateDelay_logo > 40) {
+                    if (stateDelayLogo > 40) {
                         init();
-                        stateDelay_logo = 0;
+                        stateDelayLogo = 0;
                         coinNumber = 0;
                     }
                     break;
                 }
                 case FINISH: {
-                    if (stateDelay_finish > 100) {
+                    if (stateDelayFinish > 100) {
                         gameState = LOGO;
                         lifeNumber = 3;
-                        stateDelay_finish = 0;
+                        stateDelayFinish = 0;
                     }
                     break;
                 }
                 case GAME_OVER: {
-                    if (stateDelay_gameover > 40) {
+                    if (stateDelayGameOver > 40) {
                         gameState = LOGO;
                         lifeNumber = 3;
-                        stateDelay_gameover = 0;
+                        stateDelayGameOver = 0;
                     }
                     // FIXME: 2021/10/17 missing break;
                 }
@@ -231,7 +222,6 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                                 mario.setSpeedY(-16);
                             }
                         }
-
                         rectF.set(680, 420 * scaleY, 740 * scaleX, 4800 * scaleY);
                         if (rectF.contains(event.getX(i), event.getY(i))) {
                             mario.fire();
@@ -248,19 +238,16 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 default:
                     throw new IllegalStateException("Unexpected value: " + gameState);
             }
-
         }
-
-
         return true;
     }
 
 
     @Override
     public void run() {
-        isFirstRun = true;
+        firstRun = true;
         init();
-        while (isRunning) {
+        while (running) {
             //游戏暂停
             if (!isPause()) {
                 myLogic();
@@ -538,7 +525,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 if (!mario.isDead()) {
                     mario.move(0, 3);
                     if (mario.getY() > 280) {
-                        tiledLayer_peng01.move(-980, 0);
+                        tiledLayerPeng01.move(-980, 0);
                         tiledLayer_cover.move(-980, 0);
                         //到达地图边界 人物移动
                         spritesMove(chestunts, -980);
@@ -550,12 +537,12 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                         spritesMove(pipes, -980);
                         isTransferDone = false;
                         gameState = GAMING;
+                        break;
                     }
                 }
-                break;
             }
             case GAMING: {
-                if (!threadRunning && isInited) {
+                if (!threadRunning && inited) {
                     thread.start();
                     threadRunning = true;
                 }
@@ -582,9 +569,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                         spritesLogic(bricks);
                         spritesLogic(pipes);
                     } else {
-                        if (!isMaioDieSoundPlayed) {
+                        if (!maioDieSoundPlayed) {
                             myMusic.play("music/over.mp3", false);
-                            isMaioDieSoundPlayed = true;
+                            maioDieSoundPlayed = true;
                         }
                     }
                     marioMove();
@@ -601,27 +588,27 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 if (lifeNumber < 1) {
                     gameState = GAME_OVER;
                 } else {
-                    if (stateDelay_lifecounter++ > 50) {
+                    if (stateDelayLifeCounter++ > 50) {
                         gameState = GAMING;
                         init();
-                        stateDelay_lifecounter = 0;
+                        stateDelayLifeCounter = 0;
+                        break;
                     }
                 }
-                break;
             }
             case GAME_OVER: {
-                stateDelay_gameover++;
+                stateDelayGameOver++;
 
                 break;
             }
             case FINISH: {
                 myMusic.play("music/finish.mp3", false);
                 threadRunning = false;
-                stateDelay_finish++;
+                stateDelayFinish++;
                 break;
             }
             case LOGO: {
-                stateDelay_logo++;
+                stateDelayLogo++;
                 myMusic.stop();
                 break;
             }
@@ -658,7 +645,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
      * 游戏进度控制
      */
     private void myStep() {
-        if (tiledLayer_peng01.getX() == 0 && !isEnemyShown1) {
+        if (tiledLayerPeng01.getX() == 0 && !enemyShown1) {
             for (int i = 0; i < 3; i++) {
                 Enemy chestunt = new Chestunt(32, 32, chestuntBitmaps);
                 chestunt.setVisiable(true);
@@ -674,10 +661,10 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 turtle.setPosition(360 + 40 * i, 312);
                 turtles.add(turtle);
             }
-            isEnemyShown1 = true;
+            enemyShown1 = true;
 
         }
-        if (tiledLayer_peng01.getX() == -480 && !isEnemyShown2) {
+        if (tiledLayerPeng01.getX() == -480 && !enemyShown2) {
             for (int i = 0; i < 3; i++) {
                 Enemy enemy = new Chestunt(32, 32, chestuntBitmaps);
                 enemy.setVisiable(true);
@@ -696,18 +683,18 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 cannons.add(cannon);
             }
 
-            isEnemyShown2 = true;
+            enemyShown2 = true;
         }
-        if (tiledLayer_peng01.getX() == -1000 && !isEnemyShown3) {
+        if (tiledLayerPeng01.getX() == -1000 && !enemyShown3) {
             for (int i = 0; i < 3; i++) {
                 Enemy chestunt = new Chestunt(32, 32, chestuntBitmaps);
                 chestunt.setVisiable(true);
                 chestunt.setPosition(500 + 60 * i, 0);
                 chestunts.add(chestunt);
             }
-            isEnemyShown3 = true;
+            enemyShown3 = true;
         }
-        if (tiledLayer_peng01.getX() == -1400 && !isEnemyShown4) {
+        if (tiledLayerPeng01.getX() == -1400 && !isEnemyShown4) {
             for (int i = 0; i < 2; i++) {
                 Turtle turtle = new Turtle(32, 48, turtleBitmaps);
                 turtle.setVisiable(true);
@@ -727,7 +714,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
             cannons.add(cannon);
             isEnemyShown4 = true;
         }
-        if (tiledLayer_peng01.getX() == -2200 && !isEnemyShown5) {
+        if (tiledLayerPeng01.getX() == -2200 && !isEnemyShown5) {
             for (int i = 0; i < 7; i++) {
                 Enemy chestunt = new Chestunt(32, 32, chestuntBitmaps);
                 chestunt.setVisiable(true);
@@ -738,7 +725,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
         }
 
 
-        if (tiledLayer_peng01.getX() == -2800) {
+        if (tiledLayerPeng01.getX() == -2800) {
             gameState = FINISH;
         }
     }
@@ -761,9 +748,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 } else if (mario.getX() < 400) {
                     mario.move(4, 0);
                     //越过屏幕中点 地图移动
-                } else if (tiledLayer_peng01.getX() > 800 - tiledLayer_peng01.getCols()
-                        * tiledLayer_peng01.getWidth()) {
-                    tiledLayer_peng01.move(-4, 0);
+                } else if (tiledLayerPeng01.getX() > 800 - tiledLayerPeng01.getCols()
+                        * tiledLayerPeng01.getWidth()) {
+                    tiledLayerPeng01.move(-4, 0);
                     tiledLayer_cover.move(-4, 0);
                     //到达地图边界 人物移动
                     spritesMove(chestunts, -4);
@@ -800,13 +787,13 @@ public class GameView extends SurfaceView implements Callback, Runnable {
     private void init() {
         isTransferReady = false;
         isTransferDone = true;
-        isInited = false;
+        inited = false;
         threadRunning = false;
-        isMaioDieSoundPlayed = false;
+        maioDieSoundPlayed = false;
         time = 300;
-        isEnemyShown1 = false;
-        isEnemyShown2 = false;
-        isEnemyShown3 = false;
+        enemyShown1 = false;
+        enemyShown2 = false;
+        enemyShown3 = false;
         isEnemyShown4 = false;
         isEnemyShown5 = false;
 
@@ -837,7 +824,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
         leftBitmap = getBitmap("button/left.png");
         rightBitmap = getBitmap("button/right.png");
         downBitmap = getBitmap("button/down.png");
-        gameoverbitmap = getBitmap("logo/gameover.png");
+        gameOverBitmap = getBitmap("logo/gameover.png");
         marioBitmap = getBitmap("mario/small/mario_01.png");
         logoBitmap = getBitmap("logo/logo.jpg");
         finishBitmap = getBitmap("logo/finish.jpg");
@@ -1017,17 +1004,17 @@ public class GameView extends SurfaceView implements Callback, Runnable {
         int map_peng01[][] = getMapArray();
         int map_cover[][] = getMapCoverArray();
         Bitmap mapBitmap = getBitmap("map/map1.png");
-        tiledLayer_peng01 = new TiledLayer(mapBitmap, 100, 12, 40, 40);
+        tiledLayerPeng01 = new TiledLayer(mapBitmap, 100, 12, 40, 40);
         tiledLayer_cover = new TiledLayer(mapBitmap, 100, 12, 40, 40);
-        tiledLayer_peng01.setTiledCell(map_peng01);
+        tiledLayerPeng01.setTiledCell(map_peng01);
         tiledLayer_cover.setTiledCell(map_cover);
-        if (isFirstRun) {
+        if (firstRun) {
             gameState = LOGO;
-            isFirstRun = false;
+            firstRun = false;
         } else {
             gameState = GAMING;
         }
-        isInited = true;
+        inited = true;
 
 
     }
@@ -1041,19 +1028,19 @@ public class GameView extends SurfaceView implements Callback, Runnable {
             switch (gameState) {
                 case LOGO: {
                     lockCanvas.drawBitmap(logoBitmap, 0, 0, null);
+                    break;
                 }
-                break;
                 case GAME_OVER: {
                     lockCanvas.drawColor(Color.BLACK);
-                    lockCanvas.drawBitmap(gameoverbitmap,
-                            400 - gameoverbitmap.getWidth() / 2,
-                            250 - gameoverbitmap.getHeight() / 2, null);
+                    lockCanvas.drawBitmap(gameOverBitmap,
+                            400 - gameOverBitmap.getWidth() / 2,
+                            250 - gameOverBitmap.getHeight() / 2, null);
+                    break;
                 }
-                break;
                 case FINISH: {
                     lockCanvas.drawBitmap(finishBitmap, 0, 0, null);
+                    break;
                 }
-                break;
                 case LIFT_COUNTER: {
                     lockCanvas.drawColor(Color.BLACK);
                     lockCanvas.drawBitmap(marioBitmap, 400 - marioBitmap.getWidth(),
@@ -1061,12 +1048,12 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                     lockCanvas.drawText(String.format(Locale.CHINA, "X %02d", lifeNumber),
                             440 - marioBitmap.getWidth(),
                             285 - marioBitmap.getHeight(), mPaint);
+                    break;
                 }
-                break;
                 case TRANSFER:
                 case GAMING: {
                     tiledLayer_cover.draw(lockCanvas);
-                    tiledLayer_peng01.draw(lockCanvas);
+                    tiledLayerPeng01.draw(lockCanvas);
                     spritesDraw(bricks, lockCanvas);
                     spritesDraw(commonBricks, lockCanvas);
                     spritesDraw(chestunts, lockCanvas);
@@ -1076,8 +1063,8 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                     mario.draw(lockCanvas);
                     spritesDraw(pipes, lockCanvas);
 
-                    lockCanvas.drawBitmap(aBitmap, 680, 420, null);
-                    lockCanvas.drawBitmap(bBitmap, 740, 360, null);
+                    lockCanvas.drawBitmap(aBitmap, 600, 420, null);
+                    lockCanvas.drawBitmap(bBitmap, 640, 360, null);
                     lockCanvas.drawBitmap(leftBitmap, 0, 360, null);
                     lockCanvas.drawBitmap(rightBitmap, 120, 360, null);
                     lockCanvas.drawBitmap(downBitmap, 60, 420, null);
@@ -1149,8 +1136,8 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                             30, mPaint);
                     //绘制剩余时间
                     lockCanvas.drawText(String.format(Locale.CHINA, "TIME:%03d", time), 700, 30, mPaint);
+                    break;
                 }
-                break;
             }
             lockCanvas.restore();
         } catch (Exception e) {
@@ -1583,9 +1570,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
     private void spriteCollisionMap(Sprite sprite) {
         if (sprite.isVisiable() && !sprite.isDead()) {
             //头顶碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, UP_LEFT) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, UP_MIDDLE) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, UP_RIGHT)) {
+            if (sprite.siteCollisionWith(tiledLayerPeng01, UP_LEFT) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, UP_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, UP_RIGHT)) {
                 if (sprite instanceof Bullet) {
                     sprite.setVisiable(false);
                 } else {
@@ -1593,9 +1580,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 }
             }
             //脚部碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, DOWN_LEFT) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, DOWN_MIDDLE) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, DOWN_RIGHT)) {
+            if (sprite.siteCollisionWith(tiledLayerPeng01, DOWN_LEFT) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, DOWN_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, DOWN_RIGHT)) {
                 //乌龟特殊处理
                 if (sprite instanceof Turtle) {
                     if (((Turtle) sprite).isCanFly()) {
@@ -1604,8 +1591,8 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                     } else {
                         sprite.setJumping(false);
                         int footY = sprite.getY() + sprite.getHeight();
-                        int newY = footY / tiledLayer_peng01.getHeight()
-                                * tiledLayer_peng01.getHeight()
+                        int newY = footY / tiledLayerPeng01.getHeight()
+                                * tiledLayerPeng01.getHeight()
                                 - sprite.getHeight();
                         sprite.setPosition(sprite.getX(), newY);
                     }
@@ -1619,8 +1606,8 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                     //取得脚部坐标
                     int footY = sprite.getY() + sprite.getHeight();
                     //取整
-                    int newY = footY / tiledLayer_peng01.getHeight()
-                            * tiledLayer_peng01.getHeight()
+                    int newY = footY / tiledLayerPeng01.getHeight()
+                            * tiledLayerPeng01.getHeight()
                             - sprite.getHeight();
                     sprite.setPosition(sprite.getX(), newY);
                 }
@@ -1631,9 +1618,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 sprite.setSpeedY(0);
             }
             //左边碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, LEFT_UP) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, LEFT_MIDDLE) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, LEFT_DOWN)) {
+            if (sprite.siteCollisionWith(tiledLayerPeng01, LEFT_UP) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, LEFT_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, LEFT_DOWN)) {
                 if (sprite instanceof Bullet) {
                     sprite.setVisiable(false);
                 } else {
@@ -1642,9 +1629,9 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 }
             }
             //右边碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_UP) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_MIDDLE) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_DOWN)) {
+            if (sprite.siteCollisionWith(tiledLayerPeng01, RIGHT_UP) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, RIGHT_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, RIGHT_DOWN)) {
                 if (sprite instanceof Bullet) {
                     sprite.setVisiable(false);
                 } else {
@@ -1656,17 +1643,17 @@ public class GameView extends SurfaceView implements Callback, Runnable {
         } else if (sprite.isVisiable() && sprite.isDead() && sprite instanceof Turtle) {
             if (!((Turtle) sprite).isOverturn()) {
                 //脚部碰撞
-                if (sprite.siteCollisionWith(tiledLayer_peng01, DOWN_LEFT) ||
-                        sprite.siteCollisionWith(tiledLayer_peng01, DOWN_MIDDLE) ||
-                        sprite.siteCollisionWith(tiledLayer_peng01, DOWN_RIGHT)) {
+                if (sprite.siteCollisionWith(tiledLayerPeng01, DOWN_LEFT) ||
+                        sprite.siteCollisionWith(tiledLayerPeng01, DOWN_MIDDLE) ||
+                        sprite.siteCollisionWith(tiledLayerPeng01, DOWN_RIGHT)) {
                     //乌龟特殊处理
                     sprite.setJumping(false);
                     //坐标修正
                     //取得脚部坐标
                     int footY = sprite.getY() + sprite.getHeight();
                     //取整
-                    int newY = footY / tiledLayer_peng01.getHeight()
-                            * tiledLayer_peng01.getHeight()
+                    int newY = footY / tiledLayerPeng01.getHeight()
+                            * tiledLayerPeng01.getHeight()
                             - sprite.getHeight();
                     sprite.setPosition(sprite.getX(), newY);
                 }
@@ -1677,17 +1664,17 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 sprite.setSpeedY(0);
             }
             //左边碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, LEFT_UP) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, LEFT_MIDDLE) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, LEFT_DOWN)) {
+            if (sprite.siteCollisionWith(tiledLayerPeng01, LEFT_UP) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, LEFT_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, LEFT_DOWN)) {
                 sprite.setMirror(true);
                 sprite.move(10, 0);
 
             }
             //右边碰撞
-            if (sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_UP) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_MIDDLE) ||
-                    sprite.siteCollisionWith(tiledLayer_peng01, RIGHT_DOWN)) {
+            if (sprite.siteCollisionWith(tiledLayerPeng01, RIGHT_UP) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, RIGHT_MIDDLE) ||
+                    sprite.siteCollisionWith(tiledLayerPeng01, RIGHT_DOWN)) {
                 sprite.setMirror(false);
                 sprite.move(-10, 0);
 
@@ -1723,8 +1710,7 @@ public class GameView extends SurfaceView implements Callback, Runnable {
 
     private void sptiteCollisionSprite(Sprite sprite0, List<Sprite> sprites) {
         if (sprites != null) {
-            for (int i = 0; i < sprites.size(); i++) {
-                Sprite sprite1 = sprites.get(i);
+            for (Sprite sprite1 : sprites) {
                 sptiteCollisionSprite(sprite0, sprite1);
             }
         }
@@ -1770,8 +1756,8 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                                 //取得脚部坐标
                                 int footY = sprite0.getY() + sprite0.getHeight();
                                 //取整
-                                int newY = footY / tiledLayer_peng01.getHeight()
-                                        * tiledLayer_peng01.getHeight()
+                                int newY = footY / tiledLayerPeng01.getHeight()
+                                        * tiledLayerPeng01.getHeight()
                                         - sprite0.getHeight();
                                 sprite0.setPosition(sprite0.getX(), newY);
                             }
@@ -1837,8 +1823,8 @@ public class GameView extends SurfaceView implements Callback, Runnable {
                 //取得脚部坐标
                 int footY = sprite0.getY() + sprite0.getHeight();
                 //取整
-                int newY = footY / tiledLayer_peng01.getHeight()
-                        * tiledLayer_peng01.getHeight()
+                int newY = footY / tiledLayerPeng01.getHeight()
+                        * tiledLayerPeng01.getHeight()
                         - sprite0.getHeight();
                 sprite0.setPosition(sprite0.getX(), newY);
             }
@@ -1850,9 +1836,15 @@ public class GameView extends SurfaceView implements Callback, Runnable {
 
                 sprite0.setMirror(false);
                 sprite0.move(-10, 0);
-
             }
-
         }
+    }
+
+    public boolean isPause() {
+        return pause;
+    }
+
+    public void setPause(boolean pause) {
+        this.pause = pause;
     }
 }

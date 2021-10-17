@@ -501,7 +501,6 @@ public class Sprite {
 
         switch (site) {
             case DOWN: {
-
                 if (collisionWith(sprite)
                         && sy > y
                         && h >= sy - y
@@ -513,7 +512,6 @@ public class Sprite {
                 break;
             }
             case UP: {
-
                 if (collisionWith(sprite)
                         && sy < y
                         && sy + sh >= y //砖块高于精灵最多一行高度
@@ -524,7 +522,6 @@ public class Sprite {
                 }
                 break;
             }
-
             case RIGHT: {
                 if (collisionWith(sprite)
                         && x + w == sx
@@ -543,6 +540,8 @@ public class Sprite {
                 }
                 break;
             }
+            default:
+                throw new IllegalStateException("Unexpected value: " + site);
         }
 
         return false;

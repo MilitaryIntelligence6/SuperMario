@@ -84,9 +84,7 @@ public class Brick extends ItemSprite {
                     setFrameSequenceIndex(0);
                 }
                 delay = 0;
-
             }
-
         }
     }
 
@@ -104,13 +102,14 @@ public class Brick extends ItemSprite {
                     //蘑菇默认往右移动
                     itemSprite = new Mushroom(bitmap);
                     itemSprite.setMirror(true);
+                    break;
                 }
-                break;
-                case COIN: {
-
-                }
-                break;
-
+                case FLOWER:
+                case COIN:
+                case STAR:
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + type);
             }
 
             hasItem = true;
@@ -131,22 +130,22 @@ public class Brick extends ItemSprite {
                 case COIN: {
                     itemSprite = new Coin(40, 40, bitmaps);
                     itemSprite.setRunning(false);
+                    break;
                 }
-                break;
                 case STAR: {
                     itemSprite = new Star(28, 30, bitmaps);
                     itemSprite.setRunning(true);
                     itemSprite.setMirror(true);
+                    break;
                 }
-                break;
 
                 case FLOWER: {
                     //花默认不移动
                     itemSprite = new Flower(32, 32, bitmaps);
                     itemSprite.setPosition(getX() + 4, getY() - 32);
                     itemSprite.setRunning(false);
+                    break;
                 }
-                break;
 
             }
 
