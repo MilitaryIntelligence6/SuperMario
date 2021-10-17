@@ -7,19 +7,19 @@ import android.view.View;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import cn.misection.supermario.ui.view.MyView2;
+import cn.misection.supermario.ui.view.GameView;
 
 /**
  * @author javaman
  */
 public class MainActivity extends AppCompatActivity {
 
-    private MyView2 view;
+    private GameView view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        view = new MyView2(this);
+        view = new GameView(this);
         setContentView(view);
 
     }

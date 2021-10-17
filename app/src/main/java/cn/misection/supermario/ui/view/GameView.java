@@ -1,50 +1,16 @@
 package cn.misection.supermario.ui.view;
 
-import static cn.misection.supermario.enums.GameState.FINISH;
-import static cn.misection.supermario.enums.GameState.GAMEOVER;
-import static cn.misection.supermario.enums.GameState.GAMING;
-import static cn.misection.supermario.enums.GameState.LIFTCOUNTER;
-import static cn.misection.supermario.enums.GameState.LOGO;
-import static cn.misection.supermario.enums.GameState.TRANSFER;
-import static cn.misection.supermario.enums.Site.上中;
-import static cn.misection.supermario.enums.Site.上右;
-import static cn.misection.supermario.enums.Site.上左;
-import static cn.misection.supermario.enums.Site.下;
-import static cn.misection.supermario.enums.Site.下中;
-import static cn.misection.supermario.enums.Site.下右;
-import static cn.misection.supermario.enums.Site.下左;
-import static cn.misection.supermario.enums.Site.右;
-import static cn.misection.supermario.enums.Site.右上;
-import static cn.misection.supermario.enums.Site.右下;
-import static cn.misection.supermario.enums.Site.右中;
-import static cn.misection.supermario.enums.Site.左;
-import static cn.misection.supermario.enums.Site.左上;
-import static cn.misection.supermario.enums.Site.左下;
-import static cn.misection.supermario.enums.Site.左中;
-
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.RectF;
-import android.graphics.Typeface;
+import android.graphics.*;
 import android.os.SystemClock;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.WindowManager;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 import cn.misection.supermario.audio.MyMusic;
 import cn.misection.supermario.audio.MySoundPool;
 import cn.misection.supermario.enemy.Cannon;
@@ -54,13 +20,7 @@ import cn.misection.supermario.enemy.Turtle;
 import cn.misection.supermario.enums.GameState;
 import cn.misection.supermario.enums.ItemType;
 import cn.misection.supermario.enums.Site;
-import cn.misection.supermario.item.Bullet;
-import cn.misection.supermario.item.Coin;
-import cn.misection.supermario.item.EnemyBullet;
-import cn.misection.supermario.item.Flower;
-import cn.misection.supermario.item.ItemSprite;
-import cn.misection.supermario.item.Mushroom;
-import cn.misection.supermario.item.Star;
+import cn.misection.supermario.item.*;
 import cn.misection.supermario.item.brick.Brick;
 import cn.misection.supermario.item.brick.Broken;
 import cn.misection.supermario.item.brick.CommonBrick;
@@ -69,11 +29,19 @@ import cn.misection.supermario.sprite.Mario;
 import cn.misection.supermario.sprite.Sprite;
 import cn.misection.supermario.ui.widget.TiledLayer;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import static cn.misection.supermario.enums.GameState.*;
+import static cn.misection.supermario.enums.Site.*;
+
 
 /**
  * @author javaman
  */
-public class MyView2 extends SurfaceView implements Callback, Runnable {
+public class GameView extends SurfaceView implements Callback, Runnable {
     public static final String TAG = "aaa";
     private final MyMusic myMusic;
     private final MySoundPool mySoundPool;
@@ -99,7 +67,11 @@ public class MyView2 extends SurfaceView implements Callback, Runnable {
     private boolean isEnemyShown1;
     private boolean isEnemyShown2;
     private boolean isEnemyShown3;
-    private Integer score;//用于记录分数
+
+    /**
+     * 用于记录分数;
+     */
+    private Integer score;
     private Paint mPaint;
     private Bitmap marioBitmap;
     private int lifeNumber = 3;
@@ -108,13 +80,21 @@ public class MyView2 extends SurfaceView implements Callback, Runnable {
     private int delay;
     private Bitmap logoBitmap;
     private List<Sprite> bricks;
-    private int time;//表示剩余时间
+
+    /**
+     * 表示剩余时间;
+     */
+    private int time;
     private Thread thread;
     private Bitmap finishBitmap;
     private boolean threadRunning;
     private Bitmap coinBitmap;
     private int coinNumber;
-    private GameState gameState;//表示当前游戏状态
+
+    /**
+     * 表示当前游戏状态;
+     */
+    private GameState gameState;
     private int stateDelay_lifecounter;
     private int stateDelay_finish;
     private int stateDelay_logo;
@@ -139,8 +119,13 @@ public class MyView2 extends SurfaceView implements Callback, Runnable {
 
     //endregion
     //region 通用方法
-    public MyView2(Context context) {
-        super(context);
+    public GameView(Context context) {
+//        super(context);
+        this(context, null);
+    }
+
+    public GameView(Context context, AttributeSet attrs) {
+        super(context, attrs);
         this.context = context;
         sp = context.getSharedPreferences("sp", Context.MODE_PRIVATE);
         holder = getHolder();
