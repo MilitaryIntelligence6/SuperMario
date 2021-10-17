@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * 敌人类-板栗
+ * @author javaman
  */
 
 public class Chestunt extends Enemy {

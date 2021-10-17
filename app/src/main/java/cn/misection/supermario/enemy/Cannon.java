@@ -12,6 +12,7 @@ import cn.misection.supermario.item.EnemyBullet;
 
 /**
  * 敌人类-大炮
+ * @author javaman
  */
 
 public class Cannon extends Enemy {

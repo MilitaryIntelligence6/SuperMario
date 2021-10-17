@@ -8,13 +8,22 @@ import java.util.List;
 import cn.misection.supermario.Sprite;
 
 /**
- * Created by Suramire on 2017/11/9.
+ *
+ * @author javaman
+ * @date 2017/11/9
  */
 
 public class Enemy extends Sprite {
+
     protected int delay;
+
     protected int delay1;
-    private boolean isOverturn;//是否反转
+
+    /**
+     * 是否反转;
+     */
+    private boolean isOverturn;
+
     private int step;
 
     public Enemy(int width, int height, List<Bitmap> bitmaps) {

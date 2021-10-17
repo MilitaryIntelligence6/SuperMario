@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 /**
- * Created by Suramire on 2017/12/10.
+ * @author javaman
+ * @date 2017/12/10
  */
-
 public class EnemyBullet extends Bullet {
     public EnemyBullet(Bitmap bitmap) {
         super(bitmap);

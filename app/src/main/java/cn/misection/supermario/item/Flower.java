@@ -6,9 +6,9 @@ import java.util.List;
 
 
 /**
- * Created by Suramire on 2017/11/29.
+ * @author javaman
+ * @date 2017/11/29
  */
-
 public class Flower extends ItemSprite {
 
     private int delay2;

@@ -1,10 +1,14 @@
 package cn.misection.supermario.enums;
 
 /**
- * Created by Suramire on 2017/11/11.
+ * @author javaman
+ * @date 2017/11/11
  */
 
 public enum Site {
+    /**
+     * 方向;
+     */
     上左, 上中, 上右,
     左上, 右上,
     左中, 右中,

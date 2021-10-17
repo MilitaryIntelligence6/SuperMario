@@ -67,6 +67,9 @@ import cn.misection.supermario.item.brick.CommonBrick;
 import cn.misection.supermario.item.brick.Pipe;
 
 
+/**
+ * @author javaman
+ */
 public class MyView2 extends SurfaceView implements Callback, Runnable {
     public static final String TAG = "aaa";
     private final MyMusic myMusic;

@@ -6,9 +6,9 @@ import android.graphics.Bitmap;
 import java.util.List;
 
 /**
- * Created by Suramire on 2017/12/25.
+ * @author javaman
+ * @date 2017/12/25
  */
-
 public class Pipe extends Brick {
     private boolean isTransfer;
 

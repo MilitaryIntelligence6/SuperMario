@@ -10,37 +10,117 @@ import java.util.List;
 import cn.misection.supermario.enums.Site;
 
 /**
- * Created by Suramire on 2017/10/9.
+ *
+ * @author javaman
+ * @date 2017/10/9
  * 精灵类
  * 扩充：
  * 1.与另外一个精灵碰撞时判断碰撞方位
  * 2.与地图发生碰撞的逻辑处理
  */
-
 public class Sprite {
 
-    public int mSpeedY;//y轴速度
-    //region 字段
-    private int mX;//x轴坐标
-    private int mY;//y轴坐标
-    private boolean mVisiable;//可见性
-    private int mWidth;//单帧宽度
-    private int mHeight;//单帧高度
-    private Bitmap mBitmap;//使用单张图片时
-    private List<Bitmap> mBitmaps;//使用多帧时
-    private int mFrameNumber;//总帧数
-    private int[] mFrameX;//每帧的x坐标
-    private int[] mFrameY;//每帧的y坐标
-    private int[] mFrameSequence;//帧序列
-    private int mFrameSequenceIndex;//帧序列的索引
-    private Rect mDest;//目标剪切区
-    private Rect mSrc;//源图片剪切区
-    private boolean isMirror;//是否翻转
-    private boolean isRunning;//是否跑动
-    private boolean isJumping;//是否跳跃
+
+/*
+ * region 字段
+ */
+
+    /**
+     * y轴速度
+     */
+    public int mSpeedY;
+
+    /**
+     * x轴坐标
+     */
+    private int mX;
+
+    /**
+     * y轴坐标
+     */
+    private int mY;
+
+    /**
+     * 可见性
+     */
+    private boolean mVisiable;
+
+    /**
+     * 单帧宽度
+     */
+    private int mWidth;
+
+    /**
+     * 单帧高度
+     */
+    private int mHeight;
+
+    /**
+     * 使用单张图片时
+     */
+    private Bitmap mBitmap;
+
+    /**
+     * 使用多帧时
+     */
+    private List<Bitmap> mBitmaps;
+
+    /**
+     * 总帧数
+     */
+    private int mFrameNumber;
+
+    /**
+     * 每帧的x坐标
+     */
+    private int[] mFrameX;
+
+    /**
+     * 每帧的y坐标
+     */
+    private int[] mFrameY;
+
+    /**
+     * 帧序列
+     */
+    private int[] mFrameSequence;
+
+    /**
+     * 帧序列的索引
+     */
+    private int mFrameSequenceIndex;
+
+    /**
+     * 目标剪切区
+     */
+    private Rect mDest;
+
+    /**
+     * 源图片剪切区
+     */
+    private Rect mSrc;
+
+    /**
+     * 是否翻转
+     */
+    private boolean isMirror;
+
+    /**
+     * 是否跑动
+     */
+    private boolean isRunning;
+
+    /**
+     * 是否跳跃
+     */
+    private boolean isJumping;
+
+    /**
+     * 是否死亡
+     */
+    private boolean isDead;
 
 
-    private boolean isDead;//是否死亡
     //endregion
 
     //region Getter and Setter

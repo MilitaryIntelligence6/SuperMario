@@ -5,6 +5,9 @@ import android.graphics.Bitmap;
 import java.util.List;
 
 
+/**
+ * @author javaman
+ */
 public class Coin extends ItemSprite {
     private int delay;
 

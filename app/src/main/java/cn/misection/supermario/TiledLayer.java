@@ -5,26 +5,45 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 
 /**
- * Created by Suramire on 2017/10/18.
+ *
+ * @author javaman
+ * @date 2017/10/18
  */
-
 public class TiledLayer {
-    //region 字段
+    /*
+     * region 字段;
+     */
     private int mX;
-    private int mY;
-    private int mWidth;
-    private int mHeight;
-    private Bitmap mBitmap;
-    private Rect mDest;
-    private Rect mSrc;
-    private int mRows;
-    private int mCols;
-    private int[][] mTiledCell;
-    private int[] mTiledX;
-    private int[] mTiledY;
-    //endregion
 
-    //region Getter and Setter
+    private int mY;
+
+    private int mWidth;
+
+    private int mHeight;
+
+    private Bitmap mBitmap;
+
+    private Rect mDest;
+
+    private Rect mSrc;
+
+    private int mRows;
+
+    private int mCols;
+
+    private int[][] mTiledCell;
+
+    private int[] mTiledX;
+
+    private int[] mTiledY;
+
+    /*
+     * endregion
+     */
+
+    /*
+     * region Getter and Setter
+     */
 
     public TiledLayer(Bitmap bitmap, int cols, int rows, int width, int height) {
         super();
@@ -46,7 +65,6 @@ public class TiledLayer {
         }
         mSrc = new Rect();
         mDest = new Rect();
-
     }
 
     public int getRows() {

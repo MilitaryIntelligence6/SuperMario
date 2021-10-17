@@ -5,9 +5,9 @@ import android.graphics.Bitmap;
 import java.util.List;
 
 /**
- * Created by Suramire on 2017/12/1.
+ * @author javaman
+ * @date 2017/12/1
  */
-
 public class Star extends ItemSprite {
 
 

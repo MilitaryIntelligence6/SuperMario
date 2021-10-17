@@ -13,14 +13,22 @@ import cn.misection.supermario.item.Star;
 
 /**
  * 砖块类
+ * @author javaman
  */
-
 public class Brick extends ItemSprite {
-    //表示道具类型 枚举
+
+    /**
+     * 表示道具类型 枚举;
+     */
     protected ItemType itemType;
+
     protected ItemSprite itemSprite;
-    //标志道具是否已显示
+
+    /**
+     * 标志道具是否已显示;
+     */
     private boolean hasItem;
+
     private int delay;
 
     public Brick(int width, int height, List<Bitmap> bitmaps) {

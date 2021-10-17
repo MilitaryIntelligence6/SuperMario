@@ -7,11 +7,11 @@ import java.util.List;
 import cn.misection.supermario.Sprite;
 
 /**
- * Created by Suramire on 2017/11/30.
+ * @author javaman
+ * @date 2017/11/30
  * 用于道具显示与逻辑处理
  * 边界处理
  */
-
 public class ItemSprite extends Sprite {
 
     public ItemSprite(Bitmap bitmap) {

@@ -8,15 +8,31 @@ import java.util.List;
 
 /**
  * 敌人类-乌龟
+ *
+ * @author javaman
  */
 
 public class Turtle extends Enemy {
 
     private final Thread zeroDamagThread;
+
     private boolean canFly;
-    private boolean isZeroDamage;//标志是否处于免伤状态
-    private int zeroDamageTime;//免伤时间
-    private boolean isZeroDamageThreadStarted;//标志进程是否开始
+
+    /**
+     * 标志是否处于免伤状态;
+     */
+    private boolean isZeroDamage;
+
+    /**
+     * 免伤时间;
+     */
+    private int zeroDamageTime;
+
+    /**
+     * 标志进程是否开始;
+     */
+    private boolean isZeroDamageThreadStarted;
+
     private long delay2;
 
     public Turtle(int width, int height, List<Bitmap> bitmaps) {

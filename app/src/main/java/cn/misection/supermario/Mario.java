@@ -11,26 +11,72 @@ import java.util.List;
 import cn.misection.supermario.item.Bullet;
 
 /**
- * Created by Suramire on 2017/11/9.
+ * @author javaman
+ * @date 2017/11/9
  * 玛丽类 实现无敌与免伤状态
  */
-
 public class Mario extends Sprite {
 
-    //region Fields
-    private final Thread invincibleThread;//无敌倒计时线程
-    private final Thread zeroDamagThread;//免伤倒计时线程
+/*
+ * region Fields
+ */
+
+    /**
+     * 无敌倒计时线程
+     */
+    private final Thread invincibleThread;
+
+    /**
+     * 免伤倒计时线程
+     */
+    private final Thread zeroDamagThread;
+
     private final Paint paint;
-    List<Sprite> bullets;
-    List<List<Bitmap>> bitmapsList;
-    private int status;//当前状态 0=初始化 1=吃蘑菇后 2=吃花后
-    private boolean isInvincible;//标志是否无敌状态
-    private boolean isZeroDamage;//标志是否处于免伤状态
-    private int invincibleTime;//无敌时间
-    private int zeroDamageTime;//免伤时间
-    private boolean isInvincibleThreadStarted;//标志进程是否开始
-    private boolean isZeroDamageThreadStarted;//标志进程是否开始
-    private int speedX;//移动速度
+
+    private List<Sprite> bullets;
+
+    private List<List<Bitmap>> bitmapsList;
+
+    /**
+     * 当前状态 0=初始化 1=吃蘑菇后 2=吃花后
+     */
+    private int status;
+
+    /**
+     * 标志是否无敌状态
+     */
+    private boolean isInvincible;
+
+    /**
+     * 标志是否处于免伤状态
+     */
+    private boolean isZeroDamage;
+
+    /**
+     * 无敌时间
+     */
+    private int invincibleTime;
+
+    /**
+     * 免伤时间
+     */
+    private int zeroDamageTime;
+
+    /**
+     * 标志进程是否开始
+     */
+    private boolean isInvincibleThreadStarted;
+
+    /**
+     * 标志进程是否开始
+     */
+    private boolean isZeroDamageThreadStarted;
+
+    /**
+     * 移动速度
+     */
+    private int speedX;
+
     private int delay;
 
     public Mario(int width, int height, List<Bitmap> bitmaps) {

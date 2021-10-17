@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /**
- * @author Suramiren
+ * @author javamann
  * @date 2017/11/30
  */
 public class Bullet extends ItemSprite {

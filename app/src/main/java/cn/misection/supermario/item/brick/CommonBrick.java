@@ -5,9 +5,9 @@ import android.graphics.Bitmap;
 import java.util.List;
 
 /**
- * Created by Suramire on 2017/12/9.
+ * @author javaman
+ * @date 2017/12/9
  */
-
 public class CommonBrick extends Brick {
     private boolean canBroken;
     private Broken mBroken;

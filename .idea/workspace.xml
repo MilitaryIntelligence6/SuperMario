@@ -10,14 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3973b30-e0e5-4d6d-a6d5-d6cf0a3edb9e" name="默认变更列表" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/Mario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/Mario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/MyView2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/MyView2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/Sprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/TiledLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/TiledLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MyMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MyMusic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MySoundPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/audio/MySoundPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Cannon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Cannon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Chestunt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Chestunt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enemy/Enemy.java" afterDir="false" />
@@ -27,6 +27,7 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/Site.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/enums/Site.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Coin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/EnemyBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/EnemyBullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Flower.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Flower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/ItemSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/ItemSprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Mushroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/misection/supermario/item/Mushroom.java" afterDir="false" />
@@ -53,6 +54,7 @@
   <component name="ProjectId" id="1zaoldCYYTOOqpR3byD43r7t22i" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -61,7 +63,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
@@ -140,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634396986446</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="重构;">
+      <created>1634398003046</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1634398003046</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
